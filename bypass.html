@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+
+    <body onload="myFunction()">
+        <div>Welcome</div>
+
+        <script>
+           function myFunction(){
+               var params = {'source': 'hard_codded', 'id': '1', 'name': 'Test User', 'email': 'user@test.com'};
+                console.log(params);
+//                alert("wait!");
+                post("Login", params, "post");
+           }
+            function post(path, params, method) {
+                method = method || "post"; // Set method to post by default if not specified.
+
+                var form = document.createElement("form");
+                form.setAttribute("method", method);
+                form.setAttribute("action", path);
+
+                for (var key in params) {
+                    if (params.hasOwnProperty(key)) {
+                        var hiddenField = document.createElement("input");
+                        hiddenField.setAttribute("type", "hidden");
+                        hiddenField.setAttribute("name", key);
+                        hiddenField.setAttribute("value", params[key]);
+                        form.appendChild(hiddenField);
+                    }
+                }
+                document.body.appendChild(form);
+                form.submit();
+            }
+        </script>
+
+    </body>
+</html>
